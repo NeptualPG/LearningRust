@@ -1,22 +1,24 @@
-fn main (){
-    let a = 10;
-    let b = 5; 
-    let c = 20;
+fn main(){
+     enum Coin {
+        Penny,
+        Nickel,
+        Dime,
+        Quarter,
+     }
 
-    //Using && (AND) to check if 'a' is > than 'b' AND 'a' is < than 'c'
+     // we can use the enum to create a varaible
 
-    if a > b && a < c {
-        println!("a is greater than b AND a is less than c");
-    } else {
-        println!("a is NOT greater than b AND a is NOT less than c");
-    }
+     fn value_in_cents(coin: Coin) -> u8{ //u8 is an unsigned 8-bit integer
+         match coin {
+             Coin::Penny => 1,
+             Coin::Nickel => 5,
+             Coin::Dime => 10, // you can't delete the Dime here because that is part of the enum, if you delete it, the code will not compile for pattern matching
+             Coin::Quarter => 25,
+         }
+     }
 
-    //Using || (OR) to check if 'a' is > than 'b' OR 'a' is < than 'c'
+     let conin = Coin::Penny;
 
-    if a > b || a < c {
-        println!("At least in codition with || is met");
-    } else {
-        println!("The codition with || is not met");
-    }
-    
+     println!("The value of the coin is: {}", value_in_cents(conin));
+
 }
