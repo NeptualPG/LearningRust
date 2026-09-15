@@ -14,6 +14,3 @@ fn main () {
         println!("{} is less than or equal to 10", num);
     };
  }
-
-
-
