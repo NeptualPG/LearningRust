@@ -1,16 +1,22 @@
-fn main () {
-    let num = 15;
+fn main (){
+    let a = 10;
+    let b = 5; 
+    let c = 20;
 
-    if num % 2 == 0{
-        println!("{} is even", num);
+    //Using && (AND) to check if 'a' is > than 'b' AND 'a' is < than 'c'
+
+    if a > b && a < c {
+        println!("a is greater than b AND a is less than c");
     } else {
-        println!("{} is odd", num);
+        println!("a is NOT greater than b AND a is NOT less than c");
+    }
 
-    };
+    //Using || (OR) to check if 'a' is > than 'b' OR 'a' is < than 'c'
 
-    if num > 10 {
-        println!("{} is greater than 10", num);
+    if a > b || a < c {
+        println!("At least in codition with || is met");
     } else {
-        println!("{} is less than or equal to 10", num);
-    };
- }
+        println!("The codition with || is not met");
+    }
+    
+}
