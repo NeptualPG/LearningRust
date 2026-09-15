@@ -1,14 +1,12 @@
 fn main(){
+    let mut counter  = 3;
 
-    let counter = 0; 
+    while counter !=0  {
+        println!("{}!", counter);
+        counter -= 1;
+        
+        std::thread::sleep(std::time::Duration::from_secs(1));
+    }
 
-    let result = loop{
-        counter +=1;
-
-        if counter == 10{
-            break counter * 2;
-        }
-    };
-    
-    println!("The result is: {}", result);
+    println! ("LIFTOFF!!!");
 }
