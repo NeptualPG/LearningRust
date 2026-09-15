@@ -70,4 +70,14 @@ Ownership Rules
 2. There can only be one owner at a time.
 3. when the owner goes out of scope, the value will be dropped.
 
- 
+
+Clone: to deep copy the hep data of the string, not just the stack data.
+
+when you see a call to clone, you know that some arbitrary code is being executed: that code may be expensive.
+
+Copy: Types such as integer (know size at compile time) are stored
+enterely on the stack: copies of the values are quick to make, No reason to prevent x from being valid after we create y. No need call
+clone in this case
+
+Rust has a special annotation (Copy trait) for types stored on the stack: when we use the  "=", it doesn't move, but it's simply copied,
+and the old one is still valid
