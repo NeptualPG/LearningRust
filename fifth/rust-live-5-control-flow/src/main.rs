@@ -1,12 +1,19 @@
-fn main(){
-    let condition = true;
+fn main () {
+    let num = 15;
 
-    let number = if condition {
-        5
+    if num % 2 == 0{
+        println!("{} is even", num);
     } else {
-        6
+        println!("{} is odd", num);
+
     };
 
-    println!("The value of number is: {}", number);
-}
+    if num > 10 {
+        println!("{} is greater than 10", num);
+    } else {
+        println!("{} is less than or equal to 10", num);
+    };
+ }
+
+
 
