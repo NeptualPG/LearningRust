@@ -1,7 +1,13 @@
 fn main() {
-    //s is not valid here, it's not yet declared
-    let s = "Hello";// s is valid from this point forward
+    // literal string is stone you can't change that
+    // let s1 = "hello";
+    
+    let s1 = String::from("hello"); 
+    let s2 = s1; // assign s1 to s2
 
-    // do ..... // s is still valid 
+    //print s2
+    println!("s2 = {}", s2);
 
-} // the scope is now over, and s is no longer valid
+    //print s1 
+    println!("s1 = {}", s1);
+}
