@@ -1,12 +1,9 @@
-fn main(){
-    let mut counter  = 3;
+fn main( ){
+    let a = [1, 2, 3, 4, 5];
 
-    while counter !=0  {
-        println!("{}!", counter);
-        counter -= 1;
-        
-        std::thread::sleep(std::time::Duration::from_secs(1));
+    // iter() IS A FUCNTION TO RETURN AN ITERATOR OVER THE ARRAY 
+
+    for element in a.iter() {
+        println!("the value is: {}", element);
     }
-
-    println! ("LIFTOFF!!!");
 }
