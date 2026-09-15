@@ -1,24 +1,23 @@
-fn main( ){
-    let a = [1, 2, 3, 4, 5];
-
-    // iter() IS A FUCNTION TO RETURN AN ITERATOR OVER THE ARRAY 
-    // the element is auto assigned as let and mut to the type of the array, in this case i32, that is crazy
-    for element in a.iter() {
-        println!("the value is: {}", element);   
-    };
-
-    let s = "hellouda";
-
-    // chars() String function returns an iterator over the characters of the string
-
-    for c in s.chars() {
-        println!("the value is: {}", c);
-    };
+/* 
+ FIZZBUZZ PROBLEM 
 
 
-    for number in 1..4{
-        println!("the value is: {}", number);
-    };
+*/
 
 
+fn main(){
+    for mut num in 1..100{
+        if num % 3 == 0{
+            print!("FIZZ");
+            if num % 5 != 0{
+                println!("");
+            }
+        };
+        if num % 5 == 0{
+            println!("BUZZ");
+        };
+
+
+        num += 1;
+    }
 }
