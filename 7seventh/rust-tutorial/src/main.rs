@@ -1,11 +1,17 @@
-fn main(){
-    let mut s = String::from("Hello");
-    {
-        let s1 = &mut s;
-        s1.push_str(", world")
-    }
-    let s2 = &mut s;
-    s2.push_str(";");
-    
-    println!{"s2 : {}", s2}
+// Mutable and immutable references 
+// The problem is we have mutable reference (just one) and immutable too
+// If we only use the immutable we can use several references
+fn main() {
+    let mut s = String::from("Helouda");
+
+    let s1 = &s;
+    let s2 = &s;
+
+    println!("{}, {}", s1, s2);
+
+    let s3 = &mut s;
+
+    println!("{}", s3);
+
+
 }
