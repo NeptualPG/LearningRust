@@ -1,17 +1,11 @@
-// Mutable and immutable references 
-// The problem is we have mutable reference (just one) and immutable too
-// If we only use the immutable we can use several references
-fn main() {
-    let mut s = String::from("Helouda");
+fn main (){
 
-    let s1 = &s;
-    let s2 = &s;
-
-    println!("{}, {}", s1, s2);
-
-    let s3 = &mut s;
-
-    println!("{}", s3);
-
-
+    // But that isn't existing at the moment when the code is here:
+    let ref_value = no_dangle();
 }
+
+fn no_dangle() -> String {
+    let s = String::from("helllo");
+    // return the reference 
+    s
+} // drop s
