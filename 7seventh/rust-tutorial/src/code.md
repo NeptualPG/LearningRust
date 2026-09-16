@@ -99,3 +99,30 @@ fn change_borrowed_value(s: &mut String){
     s.push_str(", world!");
 }
 
+
+----error-------
+
+fn main(){
+    let mut s = String::from("Hello");
+
+    let s1 = &mut s;
+    let s2 = &mut s;
+
+    println!("{}, {}", s1, s2);
+}
+
+---------------------- This is amazing
+
+fn main(){
+    let mut s = String::from("Hello");
+    {
+        let s1 = &mut s;
+        s1.push_str(", world")
+    }
+    let s2 = &mut s;
+    s2.push_str(";");
+    
+    println!{"s2 : {}", s2}
+}
+
+

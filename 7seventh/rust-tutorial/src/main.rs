@@ -1,8 +1,11 @@
-fn main() {
-    let s = String::from("Hello");
-    change_borrowed_value(&mut s);
-}
-
-fn change_borrowed_value(s: &mut String){
-    s.push_str(", world!");
+fn main(){
+    let mut s = String::from("Hello");
+    {
+        let s1 = &mut s;
+        s1.push_str(", world")
+    }
+    let s2 = &mut s;
+    s2.push_str(";");
+    
+    println!{"s2 : {}", s2}
 }
