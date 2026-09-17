@@ -133,7 +133,7 @@ fn first_word(s: &String) -> usize {
     s.len()
 }
 
---------------------------------------------------------
+--------------------------------------------------------error
 
 
 // Exercise: get the last number of the first word of a String (with slice);
