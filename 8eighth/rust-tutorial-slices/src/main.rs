@@ -1,27 +1,23 @@
+//Exercise: get the first word of a string();
 fn main(){
-    let s= String::from("Francesco");
-
-    // Same output
-
-    let slice = &s[0..3];
-    println!("{}", slice);
-
-    let slice = &s[..3];
-    println!("{}", slice);
-
-    // Same output
-
-    let len = s.len();
-    let slice = &s[4..len];
-    println!("{}", slice);
-
-    let slice = &s[4..];
-    println!("{}", slice);
-
-
-    // Shortcut for both initial and final index
-    let slice = &s[0..len];
-    println!("{}", slice);
-    let slice = &s[..];
-    println!("{}", slice);
+    let s = String::from("anyword and more");
+    get_word(s);
 }
+
+fn get_word(s: String) {
+    let len = s.len();
+    let mut cha: &str = "";
+    let mut i = 1;
+    
+    while i <= len{
+        cha = &s[i-1..i];
+        if cha == " "{
+            let shot: &str = &s[..i];
+            println!("{}",shot);
+            i = len;
+        }else{
+            i += 1;
+        }
+    }
+}
+
