@@ -13,7 +13,7 @@ fn main() {
 
     // Print the rectangle
     println!("{:?}", rect1);
-
+    println("react is ")
     println!("The area of the rectangle is {} square pixels.",area(rect1));
 }
 
