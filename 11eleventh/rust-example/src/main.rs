@@ -23,27 +23,20 @@ impl Rectangle{
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height 
     }
+
+    //associated function to define a square 
+    fn square(size: u32) -> Self {
+        Self{
+            width: size,
+            height: size,
+        }
+    }  
 }
 
 fn main(){
-    let rect1 = Rectangle {
-        width: 31,
-        height: 50,
-    }; 
-    let rect2 = Rectangle {
-        width: 30,
-        height: 40,
-    }; 
-    let rect3 = Rectangle {
-        width: 60,
-        height: 45,
-    }; 
-    // print the area
+    let square = Rectangle::square(10);
 
-    // println!("The height of the rectangle is {}", rect1.height());
-
-    println!("Can rect1 hold react2? {}", rect1.can_hold(&rect2));
-    println!("Can rect1 hold react3? {}", rect1.can_hold(&rect3));
-
+    //calculate the area of the square
+    println!("The area of the square is: {}", square.area());
 }
 
