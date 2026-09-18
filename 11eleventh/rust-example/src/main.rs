@@ -23,7 +23,12 @@ impl Rectangle{
     fn can_hold(&self, other: &Rectangle) -> bool {
         self.width > other.width && self.height > other.height 
     }
+}
 
+
+// We can have multiple implementations to split methods
+
+impl Rectangle {
     //associated function to define a square 
     fn square(size: u32) -> Self {
         Self{
