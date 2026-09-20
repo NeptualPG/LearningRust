@@ -8,15 +8,10 @@
 
 #[derive(Debug)]
 enum IpAddrKind{
-    V4,
-    V6
+    V4(String),
+    V6(String)
 }
 
-#[derive(Debug)]
-struct IpAddr{
-    kind: IpAddrKind,
-    address: String,
-}
 
 fn main() {
 
