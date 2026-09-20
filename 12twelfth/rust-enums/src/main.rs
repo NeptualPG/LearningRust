@@ -1,54 +1,35 @@
+// implementation with enum
 
 #[derive(Debug)]
-struct QuitMessage;
-
-#[derive(Debug)]
-struct MoveMessage {
-    x: i32,
-    y: i32,
+enum Message {
+    Quit, 
+    Move {x: i32, y: i32},
+    Write(String),
+    ChangeColor(i32, i32, i32),
 }
 
-#[derive(Debug)]
-struct WriteMessage(String);
+// method for the generic enum Message
 
-#[derive(Debug)]
-struct ChangeColorMessage(i32,i32,i32);
-
-impl QuitMessage {
-    fn call(self) {
-        println!("self is {:?}", self);
-    }
-}
-
-impl MoveMessage {
-    fn call(self) {
-        println!("self is {:?}", self);
-    }
-}
-
-impl WriteMessage {
-    fn call(self){
-        println!("self is {:?}", self);
-    }
-}
-
-impl ChangeColorMessage {
-    fn call(self){
-        println!("self is {:?}", self);
+impl Message {
+    fn call(&self) {
+        println!("Message is: {:?}", self);
     }
 }
 
 fn main(){
-    let q =  QuitMessage;
-    let m = MoveMessage{x: 10, y: 20};
-    let w = WriteMessage(String::from("Hello"));
-    let c = ChangeColorMessage(255, 0, 0);
+    let m = Message::Write(String::from ("Hello, World!"));
+    let x = Message::Move { x: 3, y: 4 };
+    let y = Message::ChangeColor(0,0,0);
+    let z = Message::Quit;
 
+    // println!("{:?}", m);
+    // println!("{:?}", x);
+    // println!("{:?}", y);
+    // println!("{:?}", z);
 
-    // call the methods:
-    q.call();
     m.call();
-    w.call();
-    c.call();
-    
+    x.call();
+    y.call();
+    z.call();
 }
+
