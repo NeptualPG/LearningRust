@@ -110,3 +110,79 @@ fn main() {
     println!("{:?}", loopback); 
 
 }
+
+
+---------------------------------
+
+#[derive(Debug)]
+enum IpAddrKind{
+    V4(u8, u8, u8, u8),
+    V6(String),
+}
+
+
+fn main() {
+
+    // Create instances of the enum
+    let home = IpAddrKind::V4(127, 0, 0, 1);
+    println!("{:?}", home);
+    
+    let loopback = IpAddrKind::V6(String::from("::1"));
+    println!("{:?}", loopback); 
+}
+
+-------------------------------
+
+#[derive(Debug)]
+struct QuitMessage;
+
+#[derive(Debug)]
+struct MoveMessage {
+    x: i32,
+    y: i32,
+}
+
+#[derive(Debug)]
+struct WriteMessage(String);
+
+#[derive(Debug)]
+struct ChangeColorMessage(i32,i32,i32);
+
+impl QuitMessage {
+    fn call(self) {
+        println!("self is {:?}", self);
+    }
+}
+
+impl MoveMessage {
+    fn call(self) {
+        println!("self is {:?}", self);
+    }
+}
+
+impl WriteMessage {
+    fn call(self){
+        println!("self is {:?}", self);
+    }
+}
+
+impl ChangeColorMessage {
+    fn call(self){
+        println!("self is {:?}", self);
+    }
+}
+
+fn main(){
+    let q =  QuitMessage;
+    let m = MoveMessage{x: 10, y: 20};
+    let w = WriteMessage(String::from("Hello"));
+    let c = ChangeColorMessage(255, 0, 0);
+
+
+    // call the methods:
+    q.call();
+    m.call();
+    w.call();
+    c.call();
+    
+}
