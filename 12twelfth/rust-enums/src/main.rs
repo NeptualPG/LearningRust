@@ -12,16 +12,27 @@ enum IpAddrKind{
     V6
 }
 
-fn main() {
-
-    let four = IpAddrKind::V4;
-    let six = IpAddrKind::V6;
-
-    route(four);
-    route(six);
+#[derive(Debug)]
+struct IpAddr{
+    kind: IpAddrKind,
+    address: String,
 }
 
-fn route(ip_kind: IpAddrKind){
-    // do something with the ip address
-    println!("Routing IP address of kind: {:?}", ip_kind); 
-}   
+fn main() {
+
+    //create instances of strct
+    let home = IpAddr{
+        kind: IpAddrKind::V4,
+        address: String::from("127.0.0.1")
+    }
+
+    println!("{:?}", home);
+
+    let loopback = IpAddr{
+        kind: IpAddrKind::V6,
+        address: String::from("::1")
+    }
+    
+    println!("{:?}", loopback);
+
+}
