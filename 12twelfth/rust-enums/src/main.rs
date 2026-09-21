@@ -1,17 +1,11 @@
-//In rust there is no "Null" value, instead we have "Option" enum
-
-// enum Option<T> {
-//     Some(T),
-//     None,
-// }
-
+// An example of Opiton enum
 fn main() {
-    let some_number = Some(5);
-    let some_string = Some("Hello");
-    let absent_number: Option<i32> = None;
+    let x: Option<i8> = Some(5);
+    let y: Option<i8> = Some(5);
 
-    println!("{:?}", some_number);
-    println!("{:?}", some_string);
-    println!("{:?}", absent_number);
+    // try to sum them
+    // unwrap_or() is a method that returns the value inside the option<>
+    // if it is Some(T)
+    let sum = x.unwrap_or(0) + y.unwrap_or(0); 
+    println!("The sum of x and y is: {}", sum);
 }
-
