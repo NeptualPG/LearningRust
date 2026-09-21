@@ -1,27 +1,18 @@
-// Match with Option<T>
-
-// enum Option<T> {
-//     Some(T),
-//     None,
-// }
+//Cath - all Pattern and _
 
 
-
-fn main () {
-    fn plus_one(x: Option<i32>) -> Option<i32> {
-        // the match needs express all the possible cases of the Option<T> enum 
-        // GOSSSHHHH THIS IS SO COOL IS LIKE A SWITCH STATEMENT BUT BETTER WITH CORRECTION AND SAFETY BUILT IN.
-        match x {
-            None => None,
-            Some(i) => Some(i + 1),
-        }
-    }
+fn main() {
+    let dice_roll = 9;
     
-    let five = Some(5);
-    let six = plus_one(five);
-    println!("{:?}", six);
-
-    let none = plus_one(None);
-    println!("{:?}", none);
-
+    // usefull to handle errors, and to handle different cases of a value
+    match dice_roll {
+        1 => println!("You rolled a one!"),
+        2 => println!("You rolled a two!"),
+        3 => println!("You rolled a three!"),
+        4 => println!("You rolled a four!"),
+        5 => println!("You rolled a five!"),
+        6 => println!("You rolled a six!"),
+        7 => (), // if you want do nothing, you can use an empty tuple
+        _ => println!("Invalid roll!"), // catch all pattern, if the value is not matched, it will be caught here 
+    }
 }
