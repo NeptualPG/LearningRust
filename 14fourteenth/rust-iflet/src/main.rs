@@ -1,8 +1,28 @@
-fn main() {
-    let config_max: Option<u32> = Some(100);
-    match config_max {
-        Some(max: i32) => println!("The maximum is configured to be {}", max),
-        _=>(),
-    }
+
+
+#[derive(Debug)]
+enum Coin {
+    Penny,
+    Nickel,
+    Dime,
+    Quarter(Rarity),
 }
 
+#[derive(Debug)]
+enum Rarity {
+    Common,
+    Uncommon,
+    Rare,
+    Epic,
+    Legendary,
+}
+
+fn main(){
+    let coin: Coin = Coin::Quarter(Rarity::Epic);
+
+    if let Coin::Quarter(rarity) = coin {
+        println!("This quarter is a {:?}", rarity);
+    }else{
+        println!("This coin is not rare, it is a {:?}", coin);
+    }
+}
