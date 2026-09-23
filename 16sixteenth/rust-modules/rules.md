@@ -39,3 +39,8 @@
    - To make a module public, declare it with pub mod instead of mod.
    - To make items within a public module public as well use pub before their declarations
   
+
+7. Grouping in Modules
+   - You can use modules to organize code for better readability, but also to separate responsibilities
+
+8. 
