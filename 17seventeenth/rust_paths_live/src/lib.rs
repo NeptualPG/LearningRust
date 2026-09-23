@@ -1,8 +1,9 @@
 // Paths 
 
 mod front_of_house {
-    mod hosting {
-        fn add_to_waitlist(){}
+    pub mod hosting {
+        // pub to both
+        pub fn add_to_waitlist(){}
     }
 }
 
