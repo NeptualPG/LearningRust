@@ -1,7 +1,7 @@
 // enums for paths 
 mod back_of_house {
     pub enum Appetizer {
-        pub Soup,
+        Soup,
         Salad,
     }
 }
