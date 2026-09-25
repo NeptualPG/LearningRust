@@ -14,3 +14,20 @@ pub fn eat_at_restaurant(){
     // hosting::add_to_waitlist();
     add_to_waitlist();
 }
+
+-----------------------------------
+
+// using paths with same names
+use std::fmt::Result; // format
+use std::io::Result as IoResult; //input/output
+
+
+fn funtio1() -> Result {
+    // function body
+    Ok(())
+}
+
+fn funtio2() -> IoResult<()> {
+    // function body
+    Ok(())
+}
