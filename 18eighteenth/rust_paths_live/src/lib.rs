@@ -7,10 +7,10 @@ mod front_of_house {
     } 
 }
 
-// This use is just in this scope, so it is not available outside of this module.
-use crate::front_of_house::hosting::add_to_waitlist;
+// Export somethin public to be used outside of the crate
+pub use crate::front_of_house::hosting;
 
 pub fn eat_at_restaurant(){
-    // hosting::add_to_waitlist();
-    add_to_waitlist();
+    hosting::add_to_waitlist();
 }
+

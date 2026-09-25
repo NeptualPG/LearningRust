@@ -48,7 +48,7 @@ fn main(){
     restaurant::front_of_house::serving::serve_order();
     restaurant::front_of_house::serving::take_payment();
 
-    // The following line will cause compile error if un commented because they are private
+    // The following line will cause compile error if un commented because they are private:
     // restaurant::back_of_house::prepare_food();
     // restaurant::back_of_house::wash_dishes();
 }
