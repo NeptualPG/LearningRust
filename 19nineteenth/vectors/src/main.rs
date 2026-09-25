@@ -73,4 +73,4 @@ fn main() {
     println!("row: {:?}", row);
 
 
-}
+} // all the vectors go out of scope and are freed when the function ends
