@@ -33,4 +33,29 @@ fn main() {
 
     let s = String::from("initial contents"); // type of s is String
     println!("s: {}", s); 
+
+    //UTF-8 encoded STRING 
+    let hello = String::from("السلام عليكم"); // Arabic
+    let hello = String::from("Dobrý den"); // Czech
+    let hello = String::from("Hello"); // English
+    let hello = String::from("שָׁלוֹם"); // Hebrew
+    let hello = String::from("नमस्ते"); // Hindi
+    let hello = String::from("こんにちは"); // Japanese
+    let hello = String::from("안녕하세요"); // Korean
+    let hello = String::from("你好"); // Chinese
+    let hello = String::from("Olá"); // Portuguese
+    let hello = String::from("Здравствуйте"); // Russian
+    let hello = String::from("Hola"); // Spanish
+    let hello = String::from("👋"); // Emoji
+
+    // Update a String
+    let mut s = String::from("hello");
+
+    s.push_str(", world"); // push_str() method appends a string slice to a String
+
+    println!("s: {}", s); // s: hello, world!
+
+    // push a single character to a String using the push() method
+    s.push('!'); // push() method appends a single character to a String
+    println!("s: {}", s); // s: hello, world!!
 }
