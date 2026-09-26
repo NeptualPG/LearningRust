@@ -58,4 +58,31 @@ fn main() {
     // push a single character to a String using the push() method
     s.push('!'); // push() method appends a single character to a String
     println!("s: {}", s); // s: hello, world!!
+
+    // Concatenation with + operator
+
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    // Pinche rust does not allow to add two String values together with the + operator.
+    // Instead, we can use the format! macro or the push_str method.
+    // IT DOESN'T WORK:
+    // let s3 = s1 + s2;
+    // let s3 = &s1 + &s2;
+    let s3 = s1 + &s2; // s1 is moved here and can no longer be used
+    println!("s3: {}", s3); // s3:
+
+    //sIGNATURE OF THE ADD METHOD
+    // fn add(self, s: &str) -> String {
+
+    // concatenate 3 strings
+    let one = String::from("one");
+    let two = String::from("two");
+    let three = String::from("three");
+
+    // Concatenate using the + operator
+    // this does not work because the + operator only works with two strings at a time
+    // let combined = one + "-" + &two + "-" + &three; // one-two-three
+    // Instead, use the format! macro
+    let combined = format!("{}-{}-{}", one, two, three); // one-two-three
+    println!("combined: {}", combined); // combined: one-two-three
 }
