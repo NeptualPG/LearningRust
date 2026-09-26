@@ -85,4 +85,33 @@ fn main() {
     // Instead, use the format! macro
     let combined = format!("{}-{}-{}", one, two, three); // one-two-three
     println!("combined: {}", combined); // combined: one-two-three
+
+    let s1 = String::from("hello");
+
+    // this is a error:
+    // let h = s1[1]; // this is a slice of the string, it is a &str
+    // different bytes can represent different characters, 
+    // so indexing into a string is not allowed in Rust. 
+    // pinche Rust does not allow indexing into a String.
+    // let h = &s1[1];
+    // intead we can use:
+    let h = &s1[0..1]; // this is a slice of the string, it is a &str
+
+    //Slicing Strings 
+    // Namaste in Hindi
+    let hello = String::from("नमस्ते");
+    // we get the letter "न" by slicing the string from index 0 to 3
+    let s = &hello[0..3]; // this is a slice of the string, it is a &str 
+    println!("s: {}", s);
+
+    // iterating over Strings
+    // we can iterate over the string using the chars() method
+    for c in "नमस्ते".chars() {
+        println!("{}", c);
+    }
+
+    /// iterate over string by bytes
+    for b in "नमस्ते".bytes() {
+        println!("{}", b);  
+    } 
 }
