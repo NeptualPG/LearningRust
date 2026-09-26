@@ -16,9 +16,21 @@ We will discuss
 5. Slicing Strings
 6. Iterating over Strings
 
- */
+*/
 
 #![allow(unused)]
 fn main() {
     // Creating a new String
+    let mut s = String::new(); // similar to Vec<T>
+
+    // Create a String with initial data
+    let Data  = "initial contents"; // data is a &str
+    let s = Data.to_string(); // to_string() method is used to create a new String
+
+
+    // The method also works on a literal directly
+    let s = "initial contents".to_string(); // type of s is String
+
+    let s = String::from("initial contents"); // type of s is String
+    println!("s: {}", s); 
 }
