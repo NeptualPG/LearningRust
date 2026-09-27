@@ -67,4 +67,33 @@ fn main() {
     println!("number: {}", number); // number: 10
 
     // Updating a HashMap
+
+    let mut map4 = HashMap::new();
+
+    map4.insert(String::from("Blue"), 10);
+    map4.insert(String::from("Yellow"), 50); 
+    // same key with a different value will overwrite the previous value for that key
+    map4.insert(String::from("Blue"), 25); // this will overwrite the previous value of 10 for the key "Blue" 
+
+    println!("{:?}", map4); // {"Blue": 25, "Yellow": 50}
+
+    // Only inserting a value if the key has no value
+    let mut map5 = HashMap::new();
+
+    map5.insert(String::from("Blue"), 1);
+    map5.entry(String::from("Yellow")).or_insert(50); // this will insert the key "Yellow" with the value 50 because it does not exist in the map5 HashMap.
+    map5.entry(String::from("Blue")).or_insert(25); // this will not insert the key "Blue" with the value 25 because it already exists in the map5 HashMap.
+
+    println!("{:?}", map5); // {"Blue": 1, "Yellow": 50}
+
+    // Updting a value based on the old value
+    let text = "Rust is a greate programming language. I love Rust!";
+    let mut map6 = HashMap::new();
+
+    for word in text.split_whitespace() {
+        let count = map6.entry(word).or_insert(0); // this will insert the key "word" with the value 0 if it does not exist in the map6 HashMap.
+        *count += 1; // this will increment the value of the key "word" by 1.
+    }
+
+    println!("{:?}", map6); // {"Rust": 2, "is": 1, "a": 1, "greate": 1, "programming": 1, "language.": 1, "I": 1, "love": 1}
 }
