@@ -41,4 +41,30 @@ fn main() {
     for (key, value) in languages {
         println!("{}: {}", key, value);
     }
+
+    // Ownership:
+
+    let mut map2 = HashMap::new();
+
+    let field_name = String::from("Favorite color");
+    let field_value = String::from("Blue");
+
+    map2.insert(&field_name, &field_value);
+
+    println!("{:?}", map2); // {}
+    // I got an error here because I tried to use field_name after it was moved into the map2 HashMap.
+    println!("field_name: {}", field_name); // field_name: Favorite color
+
+    let mut map3 = HashMap::new();
+
+    let number = 10;
+    let text = String::from("Hello, World!");
+    map3.insert(&text, number); // implemnt the copy trait for the number variable, so it can be copied into the map3 HashMap.
+
+    println!("{:?}", map3); // {"Hello, World!": 10}
+
+    println!("text: {}", text); // text: Hello, World!
+    println!("number: {}", number); // number: 10
+
+    // Updating a HashMap
 }
