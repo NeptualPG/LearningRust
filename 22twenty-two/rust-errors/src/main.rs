@@ -9,14 +9,14 @@ Error Handling in Rust
 
 */
 
-
 // Unrecoverable errors
 
+enum Reslt<T, E> {
+    Ok(T),
+    Err(E),
+} // generics concrete value of the enum can be any type, and the error type can be any type as well.
+
 fn main(){
-    // panic!("crash and burn!"); // This will cause the program to terminate and print the error message // way to handle unrecoverable errors in Rust
 
-    let v: Vec<i32> = vec![1, 2, 3];
-
-    v[99]; // This will cause the program to terminate and print the error message
 }
 
