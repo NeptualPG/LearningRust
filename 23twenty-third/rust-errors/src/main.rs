@@ -1,23 +1,38 @@
-/* 
-Error Handling in Rust
-
-- Most programming languages have one way to handle errors (exceptions)
-- Rust does not have exceptions 
-- Rust differentiates between unrecoverable errors and recoverable errors
-- Unrecoverable errors are handle by the panic! macro
-- Recoverable errors are handled by the result<T, E> enum
-
-*/
-
 use::std::fs::File;
-use::std::io::ErrorKind; // This has diferent types of errors that can occur when working with files
+use::std::io::ErrorKind;
+use::std::io::{self, Read}; 
 
-// unwrap and expect
 
+// use the ? operator to return the error if it occurs
+fn read_username_from_file() -> Result<String, io::Error> {
+    // let f = File::open("hello.txt");
 
-fn main(){
-    // let greeting_from_file: File = File::open("hello.txt").unwrap();
-    let greeting_from_file: File = File::open("hello.txt").expect("hello.txt should be included in this project");
-    // unwrap is a shortcut method that retuns the value if Ok or panics if Err.  
-    // expect is similar to unwrap but allows you to specify a custom panic message.
+    // let mut f = match f {
+    //     Ok(file) => file,
+    //     Err(e) => return Err(e),
+    // };
+
+    // let mut s = String::new();
+
+    // match f.read_to_string(&mut s) {
+    //     Ok(_) => Ok(s),
+    //     Err(e) => Err(e),
+    // }
+
+    // The ? operator can be used to simplify the code above. 
+    // It will return the error if it occurs, otherwise it will continue executing the function.
+    
+    let mut username_from_file = File::open("hello.txt")?;
+    let mut username = String::new();
+    username_from_file.read_to_string(&mut username)?;
+    Ok(username)
+}
+
+fn main () {
+    // call the function 
+    let result = read_username_from_file();
+    match result {
+        Ok(s) => println!("Username: {}", s),
+        Err(e) => println!("Error: {}", e),
+    }
 }
