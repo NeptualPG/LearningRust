@@ -24,13 +24,7 @@ fn main(){
     // We have two option to handle the Result<T, E> type:
     let greeting_file = match greeting_file_result {
         Ok(file) => file,
-        Err(error) => {
-            if error.kind() == ErrorKind::NotFound {
-                panic!("File not found");
-            } else {
-                panic!("Problem opening the file: {:?}", error);
-            }
-        },
+        Err(error) => panic!("Problem opening the file: {:?}", error),
     };
 }
 
