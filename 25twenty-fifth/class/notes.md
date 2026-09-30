@@ -35,10 +35,24 @@ Benefits
 Lifetimes:
 
 Lifetimes ensure that references are valid for as long
-as ther are needed to prevent dangling references
+as ther are needed to prevent dangling references 
 
 fn longest<'a> (x:'a str, y:&'a str) -> &'a str: This defines a function named longest with a lifetime parameter'a 
 * <'a>: this specifies a generic lifetime parameter named 'a.
 * x: &'a str: The first parameter is a string slice that must live at least as long as the lifetime 'a
 * y: &'a str: The secound parameter is a string slice with the same lifetime 'a
 * -> &'a str: The return type is a string slice that lives at least as long as the lifetime 'a
+
+Summary 
+
+Generics
+* Definition: Write flexible and reusable code with type placeholder
+* Benefits: Flexibility and reusability.
+
+Trait
+* Definition: Define share behavior that types must implement
+* Benefits: Abstraction and polymorphism
+
+Lifetime
+* Definition: Ensure references are valid, prevent dangling references.
+* Benefits: safety and clarity
