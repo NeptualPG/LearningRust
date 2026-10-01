@@ -32,3 +32,4 @@ fn main () {
 
 
 // Sumary: This code defines two functions, `largest_int` and `largest_char`, which find the largest integer and character in a slice, respectively. The `main` function demonstrates their usage by creating a vector of integers and a vector of characters, calling the respective functions, and printing the results.
+
