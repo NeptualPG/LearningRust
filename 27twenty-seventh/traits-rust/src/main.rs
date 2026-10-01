@@ -39,6 +39,48 @@ impl Summary for Tweet {
     }
 }
 
+// Traits as parameters 
+// pub fn notify(item: &impl Summary) {
+//    println!("Breaking news! {}", item.summarize());
+// }
+
+
+// pub fn notify<T: Summary>(item: &T) {
+//     println!("Breaking news! {}", item.summarize());
+// }
+
+// pub fn notify<T: Summary>(item1: &T, item2: &T) {
+//     println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
+// }
+
+// instead, we can use the following syntax
+// pub fn notify<T: Summary, U: Summary>(item1: &T, item2: &U) {
+//     // just item1:
+//     println!("Breaking news! {}", item1.summarize());
+//     // and item2:
+//     println!("Breaking news! {}", item2.summarize());
+// }
+
+use std::fmt::Display;
+
+// define multiple trait bounds with the + syntax
+pub fn notify(item: &(impl Summary + Display)) {
+   println!("Breaking news! {}", item.summarize());
+}
+
+pub fn notify<T: Summary + Display>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+// Traits as Parameters
+pub fn notify(item: &impl Summary) {
+    println!("Breaking news! {}", item.summarize());
+}
+
+pub fn notify<T:Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
+}
+
 fn main() {
     let tweet = Tweet {
         username: String::from("user123"),
@@ -47,7 +89,7 @@ fn main() {
         retweet: false,
     };
 
-    println!("{}", tweet.summarize());
+    // println!("{}", tweet.summarize());
 
     let article = NewsArticle {
         headline: String::from("The sky is blue"),
@@ -56,6 +98,8 @@ fn main() {
         content: String::from("This is another test article."),
     };
 
-    println!("{}", article.summarize());
-    println!("{}", article.summarize_author());
+    // println!("{}", article.summarize());
+    // println!("{}", article.summarize_author());
+
+    notify(&tweet);
 }
