@@ -1,34 +1,17 @@
-/* LIFETIMES
 
-Lifetimes in Rust are:
-- a tool to ensure memory safety.
-- a way to tell the compiler that references are valid for a certain amount of time.
-- a type of generic, but they are not like the other generics we have seen so far.
+// Lifetime annotation syntax
+fn main (){
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
 
-This is not a concept that is present in other languages,
-so it can be confusing at first.
-*/
+    let result = longest(string1.as_str(), string2);
+    println!("The longest string is: {}", result);
+}
 
-
-// Preventing Dangling References with Lifetimes
-
-// borrow checker example: 
-
-fn main() {
-    let r: &i32;
-    {
-        let x = 5;
-        r = &x; // ERROR: `x` does not live long enough
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
     }
-    println!("r: {}", r);
 }
-
-// solution
-
-fn main() {
-    let r: &i32;
-    let x = 5;
-    r = &x; 
-    println!("r: {}", r);
-}
-
