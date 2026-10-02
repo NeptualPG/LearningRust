@@ -1,8 +1,31 @@
+// Generics Type parameters, Trat Bounds, and Lifetimes Together
+use std::fmt::Display;
 
-// Static Lifetime
-// The 'static lifetime is the entire duration of the program'. 
-
-#![allow(unused)]
 fn main(){
-    let s: &'static str = "I have a static lifetime.";
+    let string1 = String::from("abcd");
+    let string2 = "xyz";
+
+    let result = longest_with_an_announcement(
+        string1.as_str(),
+        string2,
+        "Comparing two strings"
+    );
+    println!("The longest string is {}", result);
 }
+
+
+fn longest_with_an_announcement<'a, T>(
+    x: &'a str, 
+    y: &'a str, 
+    ann: T
+) -> &'a str
+where
+    T: Display,
+{
+    println!("Announcement! {}", ann);
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}   
