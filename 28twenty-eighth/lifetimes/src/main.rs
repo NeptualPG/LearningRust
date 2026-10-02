@@ -1,34 +1,26 @@
+// Life annotations in Method Definitions
 
-//Life tiem Elision
-fn first_word(s: &str) -> &str {
-    let bytes = s.as_bytes();
+struct ImporTantExcerpt<'a> {
+    name: String,
+}
 
-    for (i, &item) in bytes.iter().enumerate() {
-        if item == b' ' {
-            return &s[0..i];
-        }
+impl <'a> ImporTantExcerpt<'a> {
+    fn level(&self) -> i32 {
+        3
     }
-
-    &s[..]
 }
 
-// fn first_word(s: &'a str) -> &str {
-
-fn main() {
-    let my:string = String::from("Hello World");
-
-    let word: &str = first_word(&my);
-
-    let my_literal: &str = "Hello World";
-    
-    let word: &str = first_word(&my_literal[..]);
-
-    let word: &str = first_word(my_literal);
+impl <'a> ImporTantExcerpt<'a> {
+    fn announce_and_return_part(&self, announcement: &str) -> &str {
+        println!("Attention please: {}", announcement);
+        &self.name
+    }
 }
 
-// Three rules for lifetimes
-// 1. Each parameter that is a reference gets its own lifetime parameter.
-// 2. If there is exactly one input lifetime parameter, that lifetime is assigned to all
-// that lifetime is assigned to all output lifetime parameters.
-// 3. If there are multiple input lifetime parameters, 
-// but one of them is &self or &mut self, the lifetime of self is assigned to all output lifetime parameters.
+fn main(){
+    let novel = String::from("Call me Ishmael. Some years ago...");
+    let first_sentence = novel.split('.').next().expect("Could not find a '.'");
+    let i = ImporTantExcerpt {
+        name: String::from(first_sentence),
+    };
+}
