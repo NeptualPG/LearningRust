@@ -61,24 +61,66 @@ impl Summary for Tweet {
 //     println!("Breaking news! {}", item2.summarize());
 // }
 
-use std::fmt::Display;
 
-// define multiple trait bounds with the + syntax
-pub fn notify(item: &(impl Summary + Display)) {
-   println!("Breaking news! {}", item.summarize());
+
+
+
+// Traits as Parameters
+// pub fn notify(item: &impl Summary) {
+//     println!("Breaking news! {}", item.summarize());
+// }
+// now with impl two items that implement the Summary trait
+
+// pub fn notify(item1: &impl Summary + , item2: &impl Summary) {
+//     println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
+// }
+
+pub fn notify<T:Summary>(item: &T) {
+    println!("Breaking news! {}", item.summarize());
 }
 
+// pub fn notify<T: Summary, U: Summary>(item1: &T, item2: &U) {
+//     println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
+// }
+
+use std::fmt::Display;
+use std::fmt::Debug;
+
+
+//define multiple trait bounds with the + syntax
 pub fn notify<T: Summary + Display>(item: &T) {
     println!("Breaking news! {}", item.summarize());
 }
 
-// Traits as Parameters
-pub fn notify(item: &impl Summary) {
-    println!("Breaking news! {}", item.summarize());
+// pub fn notify<T, U>(item1: &T, item2: &U)    
+
+
+// fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
+//     0
+// }
+
+// Cleaner syntax for multiple trait bounds with where clauses
+fn some_function<T, U>(t: &T, u: &U) -> i32
+where T: Display + Clone,
+      U: Clone + Debug {
+    0
 }
 
-pub fn notify<T:Summary>(item: &T) {
-    println!("Breaking news! {}", item.summarize());
+
+fn some_function<T, U>(t: &T, u: &U) -> i32
+where T: Display + Clone,
+      U: Clone + Debug {
+    0
+}
+
+//Returning Types that Implement Traits
+fn returns_summarizable() -> impl Summary {
+    Tweet {
+        username: String::from("user123"),
+        content: String::from("This is a test tweet."),
+        reply: false,
+        retweet: false,
+    }
 }
 
 fn main() {
