@@ -1,147 +1,28 @@
-// A trait defines  functionality a particular type has and can share with other types.
-// We can use traits to define shared behavior in an abstract way.
+//Using trait bound to conditionally implement a method for a struct based on the trait it implements
 
-// They are similar to Interfaces!
+struct Pair<T> {
+    x: T,
+    y: T,
+}
 
-// Multiple methods can be defined in a trait.
-
-pub trait Summary {
-    fn summarize(&self) -> String;
-
-    fn summarize_author(&self) -> String {
-        String::from("(Read more...)")
+impl<T> Pair<T> {
+    fn new(x: T, y: T) -> Self {
+        Self { x, y }
     }
 }
 
-pub struct NewsArticle {
-    pub headline: String,
-    pub location: String,
-    pub author: String,
-    pub content: String,
-}
-
-impl Summary for NewsArticle {
-    fn summarize(&self) -> String {
-        format!("{}", self.author)
+impl<T: std::fmt::Display> Pair<T> {
+    fn cmp_display(&self) {
+        if self.x >= self.y {
+            println!("The largest member is x = {}", self.x);
+        } else {
+            println!("The largest member is y = {}", self.y);
+        }
     }
 }
 
-pub struct Tweet {
-    pub username: String,
-    pub content: String,
-    pub reply: bool,
-    pub retweet: bool,
-}
 
-impl Summary for Tweet {
-    fn summarize(&self) -> String {
-        format!("{}", self.username)
-    }
-}
-
-// Traits as parameters 
-// pub fn notify(item: &impl Summary) {
-//    println!("Breaking news! {}", item.summarize());
-// }
-
-
-// pub fn notify<T: Summary>(item: &T) {
-//     println!("Breaking news! {}", item.summarize());
-// }
-
-// pub fn notify<T: Summary>(item1: &T, item2: &T) {
-//     println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
-// }
-
-// instead, we can use the following syntax
-// pub fn notify<T: Summary, U: Summary>(item1: &T, item2: &U) {
-//     // just item1:
-//     println!("Breaking news! {}", item1.summarize());
-//     // and item2:
-//     println!("Breaking news! {}", item2.summarize());
-// }
-
-
-
-
-
-// Traits as Parameters
-// pub fn notify(item: &impl Summary) {
-//     println!("Breaking news! {}", item.summarize());
-// }
-// now with impl two items that implement the Summary trait
-
-// pub fn notify(item1: &impl Summary + , item2: &impl Summary) {
-//     println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
-// }
-
-pub fn notify<T:Summary>(item: &T) {
-    println!("Breaking news! {}", item.summarize());
-}
-
-// pub fn notify<T: Summary, U: Summary>(item1: &T, item2: &U) {
-//     println!("Breaking news! {} and {}", item1.summarize(), item2.summarize());
-// }
-
-use std::fmt::Display;
-use std::fmt::Debug;
-
-
-//define multiple trait bounds with the + syntax
-pub fn notify<T: Summary + Display>(item: &T) {
-    println!("Breaking news! {}", item.summarize());
-}
-
-// pub fn notify<T, U>(item1: &T, item2: &U)    
-
-
-// fn some_function<T: Display + Clone, U: Clone + Debug>(t: &T, u: &U) -> i32 {
-//     0
-// }
-
-// Cleaner syntax for multiple trait bounds with where clauses
-fn some_function<T, U>(t: &T, u: &U) -> i32
-where T: Display + Clone,
-      U: Clone + Debug {
-    0
-}
-
-
-fn some_function<T, U>(t: &T, u: &U) -> i32
-where T: Display + Clone,
-      U: Clone + Debug {
-    0
-}
-
-//Returning Types that Implement Traits
-fn returns_summarizable() -> impl Summary {
-    Tweet {
-        username: String::from("user123"),
-        content: String::from("This is a test tweet."),
-        reply: false,
-        retweet: false,
-    }
-}
-
-fn main() {
-    let tweet = Tweet {
-        username: String::from("user123"),
-        content: String::from("This is a test tweet."),
-        reply: false,
-        retweet: false,
-    };
-
-    // println!("{}", tweet.summarize());
-
-    let article = NewsArticle {
-        headline: String::from("The sky is blue"),
-        location: String::from("New York"),
-        author: String::from("Jane Smith"),
-        content: String::from("This is another test article."),
-    };
-
-    // println!("{}", article.summarize());
-    // println!("{}", article.summarize_author());
-
-    notify(&tweet);
+// Conditional implementation of a method for a generic type
+impl<T: Display> ToString for T{
+    // --snipp--
 }
