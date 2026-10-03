@@ -11,3 +11,9 @@ cargo test {any}
 
 // like regex: 
 if the name of the function has any it work.
+
+#[ignore]
+
+just the test that has the ignore:
+
+cargo test -- --ignored
