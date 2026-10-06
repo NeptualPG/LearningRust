@@ -2,7 +2,7 @@ use std::env;
 use std::fs;
 
 fn main() {
-    let args Vec<String> = env::args().collect();
+    let args: Vec<String> = env::args().collect();
 
     let (query, file_path) = parse_config(&args);
 
