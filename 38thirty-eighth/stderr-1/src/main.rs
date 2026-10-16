@@ -9,6 +9,10 @@ fn main() {
 
         // print to stderr
         eprint!("This is printend on STDERR");
+        eprintln!();
+
+        // print in bold red text to for eprintln
+        eprintln!("\x1b[1;31mThis is printend on STDERR in bold red text\x1b[0m");
     }
 
 }
