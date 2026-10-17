@@ -1,9 +1,3 @@
-/* Enviroment Variables They are a set of key-value
-pairs that are stored in the operating system
-and are used to store configuration settings
-and other information that is used by the system and
-other applications.
- */
 
 use std::env; // import the env module from the standard library
 use std::env::VarError;
@@ -44,3 +38,10 @@ fn main() {
 
     println!("Program completed successfully!");
 }
+
+/* Enviroment Variables They are a set of key-value
+pairs that are stored in the operating system
+and are used to store configuration settings
+and other information that is used by the system and
+other applications.
+ */
