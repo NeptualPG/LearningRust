@@ -78,4 +78,38 @@ fn main() {
     }; 
 
     print_z();
+
+    // println!("z: {:?}", z); // this line will cause a compile error because z has been moved into the closure
+
+    // closure traits 
+    // - Fn: captures variables by reference (&T)
+    // - FnMut: captures variables by mutable reference (&mut T)
+    // - FnOnce: captures variables by value (T)
+
+    let double = |x: i32| x * 2; // closure that implements the Fn trait
+
+    apply(double); // pass the closure as an argument to the apply function
+
+
 }
+
+// example - closure as function parameters
+fn apply<F>(f: F) where F: Fn(i32) -> i32 {
+    let result = f(5);
+    println!("The result is: {}", result);
+}
+
+/*
+Differences between closures and functions in Rust:
+
+1. Capturing Variables: Closures can capture variables from their surrounding scope, while functions cannot.
+
+2. Syntax: Closures are difined using the |args| body syntax, while functions use the fn keyword 
+
+3. Flexibility: Closures can be stored in variables, passed around as arguments, and returned from other functions
+giving them more flexibility than traditional functions.
+
+4: Memory usage:
+Closures that capture the variables from their enviroment may use more memory than regular functions because they store
+those captured values.
+*/
