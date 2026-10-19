@@ -33,9 +33,42 @@ fn main() {
 
     // Types of iterators
 
-    /*1 .iter() - creates an iterator that borrows each element of the collection, allowing you to read the values without taking ownership.
-
+    /*1 .iter() - 
+      purpose: creates an iterator that borrows each element of the collection, 
+      allowing you to read the values without taking ownership of them.
+      Ownership: The iterator yields references (&T), no owned values: the original collection 
+      is accessible and unaltered after iteration.
+      use case:use iter() when you want to read or inspect elements without taking ownership
+      or modifying the collection.
      */
+
+    let numbers = vec![1, 2, 3];
+
+    for number in numbers.iter() {
+        println!("Number: {}", number);
+    }
+    
+    println!(".iter()");
+    println!("Original numbers vector: {:?}", numbers); // The original vector is still accessible
+
+
+
+    /*2 .into_iter() - 
+      purpose: creates an iterator that takes ownership of the collection, 
+      consuming it and yielding owned values.
+      Ownership: The iterator yields owned values (T), and the original collection is no longer accessible after iteration.
+      use case: use into_iter() when you want to consume the collection, transferring ownership of its elements.
+     */
+
+    let mut numbers = vec![1, 2, 3];
+
+    for num in numbers.iter_mut() {
+        *num += 1; // Modify the elements in place
+        println!("Modified Number: {}", num);
+    }
+
+    println!(".iter_mut()");
+    println!("Modified numbers vector: {:?}", numbers); // The original vector is still accessible and modified
 
 }
 
