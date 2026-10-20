@@ -9,6 +9,9 @@ edition = "2024"
 
 [profile.dev]
 opt-level = 0
+debug = true# This is the default profile for `cargo build` and `cargo run`.
 
 [profile.release]
-opt-level = 3
+opt-level = 3 
+debug = false # This is the default profile for `cargo build --release` and `cargo run --release`.
+lto = true # This enables Link Time Optimization (LTO) for release builds, which can improve performance and reduce binary size.

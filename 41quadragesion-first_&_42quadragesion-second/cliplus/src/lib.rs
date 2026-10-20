@@ -9,7 +9,7 @@ pub struct Config {
 }
 
 impl Config {
-    pub fn build(args: impl Iterator<Item = String>) -> Result<Config, &'static' str> {
+    pub fn build(mut args: impl Iterator<Item = String>) -> Result<Config, &'static str> {
 
         args.next(); // skip the first argument which is the program name
 
@@ -34,7 +34,7 @@ impl Config {
 }
 
 pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
-    let contents = fs::read_to_string(config.file_path)?;
+    let contents = fs::read_to_string(&config.filename)?;
 
     let results = if config.ignore_case {
         search_case_insensitive(&config.query, &contents)
@@ -42,8 +42,8 @@ pub fn run(config: Config) -> Result<(), Box<dyn Error>> {
         search(&config.query, &contents)
     };
 
-    for line in resutlts {
-        prentln!("{}", line);
+    for line in results {
+        println!("{}", line);
     } 
 
     Ok(())
