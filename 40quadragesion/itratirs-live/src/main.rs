@@ -70,6 +70,46 @@ fn main() {
     println!(".iter_mut()");
     println!("Modified numbers vector: {:?}", numbers); // The original vector is still accessible and modified
 
+
+    /* 3. into_iter()
+    Purpose: Consume the collection and creates an iterator that takes ownership of each element.
+    Ownership: The iterator yields owned values (T). After iteration, the original collection is no
+    longer accessible.
+    Use Case: Useful when you want to transfer ownership of the elemnts.
+    */
+
+    let numbers: Vec<i32> = vec![1, 2, 3];
+
+    for num in numbers.into_iter() {
+        println!("Owned Number: {}", num);
+    }
+
+    // println!("{:?}", numbers); // This line will cause a compile-time error because `numbers` has been moved and is no longer accessible
+
+    /* 
+        Summary of Iterator Types:
+        - .iter(): Borrows elements, yields references (&T), original collection remains accessible.
+        - .iter_mut(): Borrows elements mutably, yields mutable references (&mut T),
+            original collection remains accessible and can be modified.
+        - .into_iter(): Consumes the collection, yields owned values (T), original collection is no longer accessible.
+    ```
+     */
+
+    // Methods to modify or consume iterators: map(), filter(), fold(), collect()
+
+    let numbers = vec![1, 2, 3, 4, 5];
+
+    // Map 
+    let squared_numbers: Vec<_> = numbers.iter().map(|x| x * x).collect();
+    println!("Squared numbers: {:?}", squared_numbers);
+
+    // FILTER
+    let even_numbers: Vec<_> = numbers.iter().filter(|&&x| x % 2 == 0).collect();
+    println!("Even numbers: {:?}", even_numbers);
+
+    // FOLD (similar to reduce in other languages)
+    let sum: i32 = numbers.iter().fold(0, |acc, x| acc + x);
+    println!("Sum of numbers: {}", sum);
 }
 
 pub trait iterator{
