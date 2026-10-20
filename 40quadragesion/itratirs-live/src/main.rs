@@ -117,3 +117,14 @@ pub trait iterator{
     fn next(&mut self) -> Option<Self::Item>;
 
 }
+
+/* Recap
+Iterators in Rust provide a poweful and flexible way to process data efficiently by 
+transforming, filtering, and aggregating elements in a collection.
+
+Rust`s iterators are lazy, meaning they don't do any work until explicitly instructed to
+
+Iterators are fine-grained, allowing you to control data ownership and mutability during iteration.
+
+Methods like .map(), .filter(), and .fold() provide expressive ways to transform and aggregate data, enabling functional programming paradigms in Rust.`
+*/
