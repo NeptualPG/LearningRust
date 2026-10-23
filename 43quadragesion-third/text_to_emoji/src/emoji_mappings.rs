@@ -1,4 +1,4 @@
-use std::collection::HashMap;
+use std::collections::HashMap;
 
 pub fn get_emoji_map() -> HashMap<&'static str, &'static str> {
     let mut map = HashMap::new();
@@ -9,4 +9,5 @@ pub fn get_emoji_map() -> HashMap<&'static str, &'static str> {
     map.insert("coffee", "☕");
     map.insert("pizza", "🍕");
     map.insert("sun", "☀️");
+    map
 }

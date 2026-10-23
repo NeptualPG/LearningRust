@@ -7,7 +7,7 @@ mod emoji_mappings;
 /// * `sentence` - A string slice that holds the sentence to be converted.
 /// # Returns
 /// * A `String` with words replaced by their corresponding emojis.
-/// 
+///
 /// # Example
 /// ```
 /// use text_to_emoji::text_to_emoji;
@@ -28,4 +28,22 @@ pub fn text_to_emoji(sentence: &str) -> String {
     }
 
     result.trim_end().to_string() // Remove the trailing space and return
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_text_to_emoji() {
+        assert_eq!(text_to_emoji("I love coffee and pizza"), "I ❤️ ☕ and 🍕");
+    }
+
+    #[test]
+    fn test_text_to_emoji_with_unknown_word() {
+        assert_eq!(
+            text_to_emoji("I love coffee and pizza and stars"),
+            "I ❤️ ☕ and 🍕 and stars"
+        );
+    }
 }
