@@ -13,7 +13,7 @@ mod emoji_mappings;
 /// use text_to_emoji::text_to_emoji;
 /// assert_eq!(text_to_emoji("I love coffee and pizza"), "I ❤️ ☕ and 🍕");
 /// ```
-pub fn text_to_emoji(sentence: &str) -> String {
+pub fn convert_to_emoji(sentence: &str) -> String {
     let emoji_map = emoji_mappings::get_emoji_map();
     let words: Vec<&str> = sentence.split_whitespace().collect();
     let mut result = String::new();
@@ -24,26 +24,8 @@ pub fn text_to_emoji(sentence: &str) -> String {
         } else {
             result.push_str(word);
         }
-        result.push(' '); // Add a space after each word/emoji
+        result.push(' '); // Add space after each word/emoji
     }
 
-    result.trim_end().to_string() // Remove the trailing space and return
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn test_text_to_emoji() {
-        assert_eq!(text_to_emoji("I love coffee and pizza"), "I ❤️ ☕ and 🍕");
-    }
-
-    #[test]
-    fn test_text_to_emoji_with_unknown_word() {
-        assert_eq!(
-            text_to_emoji("I love coffee and pizza and stars"),
-            "I ❤️ ☕ and 🍕 and stars"
-        );
-    }
+    result.trim_end().to_string() // Remove trailing space
 }

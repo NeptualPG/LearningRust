@@ -2,5 +2,13 @@
 name = "text_to_emoji"
 version = "0.1.0"
 edition = "2024"
+authors = ["NeptualGP neptualpg@gmail.com"]
+description = "A library to convert text to emoji."
+linces = "MIT"
+repository = ""
+homepage = ""
+readme = "README.md"
+keywords = ["text", "emoji", "conversion"]
+categories = ["text-processing", "emoji"]
 
 [dependencies]
