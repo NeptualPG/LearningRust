@@ -1,14 +1,31 @@
-pub fn add(left: u64, right: u64) -> u64 {
-    left + right
-}
+mod emoji_mappings;
 
-#[cfg(test)]
-mod tests {
-    use super::*;
+// Converts words in a given sentence to their corresponding emojis.
+// arguments:
 
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
+/// # Arguments
+/// * `sentence` - A string slice that holds the sentence to be converted.
+/// # Returns
+/// * A `String` with words replaced by their corresponding emojis.
+/// 
+/// # Example
+/// ```
+/// use text_to_emoji::text_to_emoji;
+/// assert_eq!(text_to_emoji("I love coffee and pizza"), "I ❤️ ☕ and 🍕");
+/// ```
+pub fn text_to_emoji(sentence: &str) -> String {
+    let emoji_map = emoji_mappings::get_emoji_map();
+    let words: Vec<&str> = sentence.split_whitespace().collect();
+    let mut result = String::new();
+
+    for word in words {
+        if let Some(&emoji) = emoji_map.get(word) {
+            result.push_str(emoji);
+        } else {
+            result.push_str(word);
+        }
+        result.push(' '); // Add a space after each word/emoji
     }
+
+    result.trim_end().to_string() // Remove the trailing space and return
 }
